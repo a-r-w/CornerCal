@@ -52,6 +52,18 @@ class CalendarController: NSObject {
         let maxWeeksInMonth = (calendar.maximumRange(of: .day)?.upperBound)! / daysInWeek
         shownItemCount = daysInWeek * (maxWeeksInMonth + 2 + 1)
         
+        NotificationCenter.default.addObserver(forName: NSNotification.Name.NSSystemTimeZoneDidChange, object: nil, queue: OperationQueue.main) { (note) in
+            if let timer = self.timer {
+                self.onTick(timer: timer)
+            }
+         }
+
+         NotificationCenter.default.addObserver(forName: NSNotification.Name.NSSystemClockDidChange, object: nil, queue: OperationQueue.main) { (note) in
+             if let timer = self.timer {
+                 self.onTick(timer: timer)
+             }
+         }
+
         updateCurrentlyShownDays()
     }
     
@@ -91,19 +103,11 @@ class CalendarController: NSObject {
     }
     
     private func onTick(timer: Timer) {
-        tick = calendar.date(byAdding: .second, value: Int(tickInterval), to: lastTick!)
+        tick = Date()
         
         onTimeUpdate?()
         if (!calendar.isDate(tick!, equalTo: lastTick!, toGranularity: .day)) {
             onCalendarUpdate?()
-        }
-        
-        let now = Date()
-        let timeDeviation = abs((tick?.timeIntervalSince1970)! - now.timeIntervalSince1970)
-        
-        // allow maximum time deviation of 0.5 seconds
-        if (timeDeviation > 0.5) {
-            tick = now
         }
         
         lastTick = tick

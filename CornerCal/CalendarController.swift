@@ -104,7 +104,9 @@ class CalendarController: NSObject {
     
     private func onTick(timer: Timer) {
         tick = Date()
-        
+
+        NSLog("tick: %@ lastTick: %@", tick!.description, lastTick!.description)
+
         onTimeUpdate?()
         if (!calendar.isDate(tick!, equalTo: lastTick!, toGranularity: .day)) {
             onCalendarUpdate?()

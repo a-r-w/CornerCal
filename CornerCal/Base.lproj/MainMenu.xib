@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -56,8 +56,14 @@
                         <action selector="openSettingsClicked:" target="3bX-Tg-Ykk" id="PDc-6Q-w7L"/>
                     </connections>
                 </menuItem>
+                <menuItem title="System Preferences" id="ybS-Fn-RlF">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="openSystemPreferencesClicked:" target="3bX-Tg-Ykk" id="FIw-Uf-43y"/>
+                    </connections>
+                </menuItem>
             </items>
-            <point key="canvasLocation" x="-109.5" y="-89.5"/>
+            <point key="canvasLocation" x="-109.5" y="-80"/>
         </menu>
         <customView id="IaI-2C-Pq8">
             <rect key="frame" x="0.0" y="0.0" width="276" height="240"/>
@@ -67,7 +73,7 @@
                     <rect key="frame" x="10" y="0.0" width="256" height="200"/>
                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="n43-Ml-piN">
                         <rect key="frame" x="0.0" y="0.0" width="256" height="200"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <collectionView autoresizesSubviews="NO" id="maz-ht-22y">
                                 <rect key="frame" x="0.0" y="0.0" width="256" height="200"/>
@@ -85,11 +91,11 @@
                         <edgeInsets key="contentInsets" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
                     </clipView>
                     <edgeInsets key="contentInsets" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
-                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="0.5" horizontal="YES" id="Vt0-3b-5Kk">
+                    <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="0.5" horizontal="YES" id="Vt0-3b-5Kk">
                         <rect key="frame" x="-100" y="-100" width="224" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
-                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="p1v-Sx-CEK">
+                    <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="p1v-Sx-CEK">
                         <rect key="frame" x="240" y="0.0" width="16" height="200"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
@@ -102,7 +108,7 @@
                     </constraints>
                     <buttonCell key="cell" type="roundRect" title="◀" bezelStyle="roundedRect" alignment="center" imageScaling="proportionallyDown" inset="2" id="JkT-H5-zCl">
                         <behavior key="behavior" lightByContents="YES"/>
-                        <font key="font" metaFont="cellTitle"/>
+                        <font key="font" metaFont="label" size="12"/>
                         <string key="keyEquivalent"></string>
                     </buttonCell>
                     <connections>
@@ -117,7 +123,7 @@
                     </constraints>
                     <buttonCell key="cell" type="roundRect" title="▶" bezelStyle="roundedRect" alignment="center" imageScaling="proportionallyDown" inset="2" id="gys-YA-Nr4">
                         <behavior key="behavior" lightByContents="YES"/>
-                        <font key="font" metaFont="cellTitle"/>
+                        <font key="font" metaFont="label" size="12"/>
                         <string key="keyEquivalent"></string>
                     </buttonCell>
                     <connections>
@@ -159,7 +165,7 @@ IA
             </constraints>
             <point key="canvasLocation" x="-110" y="131"/>
         </customView>
-        <window title="Settings" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="2fn-5w-bKg">
+        <window title="Settings" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="2fn-5w-bKg">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowCollectionBehavior key="collectionBehavior" fullScreenNone="YES"/>
             <rect key="contentRect" x="564" y="309" width="410" height="250"/>

@@ -110,6 +110,10 @@ class MainMenuController: NSObject, NSCollectionViewDataSource {
         NSApp.activate(ignoringOtherApps: true)
     }
     
+    @IBAction func openSystemPreferencesClicked(_ sender: NSMenuItem) {
+        NSWorkspace.shared.open(URL(fileURLWithPath: "/System/Library/PreferencePanes/DateAndTime.prefPane"))
+    }
+
     @IBAction func leftClicked(_ sender: NSButton) {
         controller.decrementMonth()
     }

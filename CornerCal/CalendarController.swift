@@ -161,7 +161,7 @@ class CalendarController: NSObject {
         self.onTimeUpdate = onTimeUpdate
         self.onCalendarUpdate = onCalendarUpdate
         
-        if (tick == nil) {
+        if (!(timer?.isValid ?? false)) {
             onCalendarUpdate()
             setDateFormat()
         }

@@ -25,6 +25,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func applicationDidFinishLaunching(_ notification: Notification) {
+        appController.initMenu()
         appController.refreshState()
     }
     

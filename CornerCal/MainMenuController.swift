@@ -47,9 +47,12 @@ class MainMenuController: NSObject, NSCollectionViewDataSource {
     @IBOutlet weak var settingsWindow: NSWindow!
     
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+        
+    var statusClock: NSMenuItem?
     
     private func updateMenuTime() {
         statusItem.title = controller.getFormattedDate()
+        statusClock?.title = "London: " + controller.getWorldClockFormattedDate(timezone: TimeZone(identifier: "Europe/London")!)
     }
     
     private func updateCalendar() {
@@ -126,4 +129,11 @@ class MainMenuController: NSObject, NSCollectionViewDataSource {
         controller.resetMonth()
     }
 
+    func initMenu() {
+        statusClock = NSMenuItem(title: "London: 12pm", action: nil, keyEquivalent: "")
+        statusMenu.insertItem(statusClock!, at: 1)
+        statusMenu.insertItem(NSMenuItem.separator(), at: 1)
+
+    }
+    
 }

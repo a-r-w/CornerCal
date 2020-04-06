@@ -19,6 +19,7 @@ class CalendarController: NSObject {
     
     let calendar = Calendar.autoupdatingCurrent
     let formatter = DateFormatter()
+    let worldClockFormatter = DateFormatter()
     let monthFormatter = DateFormatter()
     var locale: Locale!
     var timer: Timer? = nil
@@ -99,8 +100,29 @@ class CalendarController: NSObject {
         }
         
         formatter.dateFormat = String(format: "%@%@", dateFormat, timeFormat)
-        initTiming(useSeconds: showSeconds)
     }
+    
+    func setWorldClockFormat() {
+         let defaults = UserDefaults.standard
+         let keys = SettingsKeys()
+         
+         let use24Hours = defaults.bool(forKey: keys.USE_HOURS_24_KEY)
+         let showAMPM = defaults.bool(forKey: keys.SHOW_AM_PM_KEY)
+         
+         worldClockFormatter.locale = locale
+         
+         var timeTemplate = "mm"
+         timeTemplate += (use24Hours) ? "H" : "h"
+         
+         worldClockFormatter.setLocalizedDateFormatFromTemplate(timeTemplate)
+         var timeFormat = worldClockFormatter.dateFormat!
+         
+         if (use24Hours || !showAMPM) {
+             timeFormat = timeFormat.replacingOccurrences(of: "a", with: "")
+         }
+         
+         worldClockFormatter.dateFormat = String(format: "%@", timeFormat)
+     }
     
     private func onTick(timer: Timer) {
         tick = Date()
@@ -115,7 +137,12 @@ class CalendarController: NSObject {
         lastTick = tick
     }
     
-    private func initTiming(useSeconds: Bool) {
+    private func initTiming() {
+        
+        let defaults = UserDefaults.standard
+        let keys = SettingsKeys()
+        let useSeconds = defaults.bool(forKey: keys.SHOW_SECONDS_KEY)
+        
         tickInterval = (useSeconds) ? 1 : 60
         let now = Date()
         let fireAfter = (useSeconds) ? 1 : 60 - calendar.component(.second, from: now)
@@ -164,6 +191,8 @@ class CalendarController: NSObject {
         if (!(timer?.isValid ?? false)) {
             onCalendarUpdate()
             setDateFormat()
+            setWorldClockFormat()
+            initTiming()
         }
     }
     
@@ -199,6 +228,11 @@ class CalendarController: NSObject {
         // they're used as a hack to stop the date from wobbling around in the menu item
         // basically, we're forcing an overflow here
         return formatter.string(from: tick!)
+    }
+    
+    func getWorldClockFormattedDate(timezone: TimeZone) -> String {
+        worldClockFormatter.timeZone = timezone
+        return worldClockFormatter.string(from: tick!)
     }
     
     func getMonth() -> String {

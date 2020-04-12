@@ -45,7 +45,7 @@ class MainMenuController: NSObject, NSCollectionViewDataSource {
     @IBOutlet weak var collectionView: NSCollectionView!
     
     @IBOutlet weak var settingsWindow: NSWindow!
-    
+        
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         
     var statusClock: NSMenuItem?

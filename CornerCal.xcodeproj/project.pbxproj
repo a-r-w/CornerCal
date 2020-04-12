@@ -15,6 +15,7 @@
 		229D07C41F78709A00A22E37 /* CalendarDayItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 229D07C21F78709A00A22E37 /* CalendarDayItem.xib */; };
 		22B3E0961F9BEF4400DA4018 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B3E0951F9BEF4400DA4018 /* SettingsController.swift */; };
 		22D879121F8AD27A00D1956C /* CalendarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D879111F8AD27A00D1956C /* CalendarController.swift */; };
+		7AD944C0243AEA0C0077909E /* WorldClockSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD944BF243AEA0C0077909E /* WorldClockSettingsController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		229D07C21F78709A00A22E37 /* CalendarDayItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarDayItem.xib; sourceTree = "<group>"; };
 		22B3E0951F9BEF4400DA4018 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		22D879111F8AD27A00D1956C /* CalendarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarController.swift; sourceTree = "<group>"; };
+		7AD944BF243AEA0C0077909E /* WorldClockSettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldClockSettingsController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				229D07B21F76FB0200A22E37 /* MainMenuController.swift */,
 				22D879111F8AD27A00D1956C /* CalendarController.swift */,
 				22B3E0951F9BEF4400DA4018 /* SettingsController.swift */,
+				7AD944BF243AEA0C0077909E /* WorldClockSettingsController.swift */,
 				229D07C11F78709A00A22E37 /* CalendarDayItem.swift */,
 				229D07C21F78709A00A22E37 /* CalendarDayItem.xib */,
 			);
@@ -152,6 +155,7 @@
 				22B3E0961F9BEF4400DA4018 /* SettingsController.swift in Sources */,
 				22D879121F8AD27A00D1956C /* CalendarController.swift in Sources */,
 				229D07A51F76EFEA00A22E37 /* AppDelegate.swift in Sources */,
+				7AD944C0243AEA0C0077909E /* WorldClockSettingsController.swift in Sources */,
 				229D07C31F78709A00A22E37 /* CalendarDayItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

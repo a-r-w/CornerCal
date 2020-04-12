@@ -24,6 +24,8 @@ class SettingsController: NSObject, NSWindowDelegate {
     
     @IBOutlet weak var calendarController: CalendarController!
     
+    @IBOutlet weak var worldClockSettingsWindow: NSWindow!
+    
     override init() {
         defaults = UserDefaults.standard
         defaults.synchronize()
@@ -83,4 +85,11 @@ class SettingsController: NSObject, NSWindowDelegate {
             calendarController.setDateFormat()
         }
     }
+    
+    @IBAction func worldClockSettingsClicked(_ sender: NSButton) {
+        
+        let worldClocksettingsWindowController = NSWindowController.init(window: worldClockSettingsWindow)
+        worldClocksettingsWindowController.showWindow(sender)
+    }
+
 }

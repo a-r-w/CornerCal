@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16096" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16096"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -28,6 +28,12 @@
                 <outlet property="showDayOfWeekBox" destination="sw3-iQ-hki" id="VIU-SJ-3w9"/>
                 <outlet property="showSecondsBox" destination="DsG-Kg-fxR" id="a3Q-Z4-nsY"/>
                 <outlet property="use24HoursBox" destination="E8n-nc-rfB" id="O1q-22-QEZ"/>
+                <outlet property="worldClockSettingsWindow" destination="aTW-Zn-PwZ" id="PEz-lQ-36Z"/>
+            </connections>
+        </customObject>
+        <customObject id="5Ua-QC-dcF" customClass="WorldClockSettingsController" customModule="CornerCal" customModuleProvider="target">
+            <connections>
+                <outlet property="timezoneCombo" destination="66E-hO-mIk" id="N6U-Oh-pFk"/>
             </connections>
         </customObject>
         <customObject id="3bX-Tg-Ykk" customClass="MainMenuController" customModule="CornerCal" customModuleProvider="target">
@@ -73,7 +79,7 @@
                     <rect key="frame" x="10" y="0.0" width="256" height="200"/>
                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="n43-Ml-piN">
                         <rect key="frame" x="0.0" y="0.0" width="256" height="200"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView autoresizesSubviews="NO" id="maz-ht-22y">
                                 <rect key="frame" x="0.0" y="0.0" width="256" height="200"/>
@@ -168,93 +174,173 @@ IA
         <window title="Settings" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="2fn-5w-bKg">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowCollectionBehavior key="collectionBehavior" fullScreenNone="YES"/>
-            <rect key="contentRect" x="564" y="309" width="410" height="250"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <rect key="contentRect" x="564" y="309" width="348" height="189"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <value key="minSize" type="size" width="410" height="250"/>
             <value key="maxSize" type="size" width="410" height="250"/>
             <view key="contentView" id="z56-gW-g35">
-                <rect key="frame" x="0.0" y="0.0" width="410" height="250"/>
+                <rect key="frame" x="0.0" y="0.0" width="348" height="189"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button fixedFrame="YES" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="DsG-Kg-fxR">
-                        <rect key="frame" x="139" y="194" width="220" height="30"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="Show the time with seconds" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="YBS-XV-zIF">
-                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="checkBoxClicked:" target="MUN-z6-qDm" id="0DQ-oF-JYj"/>
-                        </connections>
-                    </button>
-                    <button fixedFrame="YES" tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="E8n-nc-rfB">
-                        <rect key="frame" x="139" y="162" width="220" height="30"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="Use a 24-hour clock" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="X0B-xC-XWg">
-                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="checkBoxClicked:" target="MUN-z6-qDm" id="b6T-PW-c9s"/>
-                        </connections>
-                    </button>
-                    <button fixedFrame="YES" tag="3" translatesAutoresizingMaskIntoConstraints="NO" id="oWQ-Vp-99m">
-                        <rect key="frame" x="139" y="130" width="220" height="30"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="Show AM/PM" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="wHM-Vz-n6I">
-                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="checkBoxClicked:" target="MUN-z6-qDm" id="Em2-DF-Vt2"/>
-                        </connections>
-                    </button>
-                    <button fixedFrame="YES" tag="4" translatesAutoresizingMaskIntoConstraints="NO" id="qib-nV-OYJ">
-                        <rect key="frame" x="139" y="66" width="220" height="30"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="Show date" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="BDg-ZQ-zFx">
-                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="checkBoxClicked:" target="MUN-z6-qDm" id="NrB-aN-wmX"/>
-                        </connections>
-                    </button>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DuK-RT-lm9">
-                        <rect key="frame" x="31" y="196" width="93" height="22"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Time options" usesSingleLineMode="YES" id="V7g-VS-7tR">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YMg-hJ-eoO">
-                        <rect key="frame" x="31" y="68" width="93" height="22"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <gridView xPlacement="fill" yPlacement="top" rowAlignment="none" columnSpacing="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="lJa-gS-zG5">
+                        <rect key="frame" x="119" y="115" width="188" height="54"/>
+                        <rows>
+                            <gridRow id="LVW-JE-7En"/>
+                            <gridRow id="8S6-DY-hbK"/>
+                            <gridRow id="qzH-7k-DxD"/>
+                        </rows>
+                        <columns>
+                            <gridColumn id="wri-ny-Ez8"/>
+                        </columns>
+                        <gridCells>
+                            <gridCell row="LVW-JE-7En" column="wri-ny-Ez8" id="Fpz-jO-dvS">
+                                <button key="contentView" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="DsG-Kg-fxR">
+                                    <rect key="frame" x="-2" y="38" width="192" height="18"/>
+                                    <buttonCell key="cell" type="check" title="Show the time with seconds" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="YBS-XV-zIF">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="checkBoxClicked:" target="MUN-z6-qDm" id="0DQ-oF-JYj"/>
+                                    </connections>
+                                </button>
+                            </gridCell>
+                            <gridCell row="8S6-DY-hbK" column="wri-ny-Ez8" id="asi-zF-w9Q">
+                                <button key="contentView" tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="E8n-nc-rfB">
+                                    <rect key="frame" x="-2" y="18" width="192" height="18"/>
+                                    <buttonCell key="cell" type="check" title="Use a 24-hour clock" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="X0B-xC-XWg">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="checkBoxClicked:" target="MUN-z6-qDm" id="b6T-PW-c9s"/>
+                                    </connections>
+                                </button>
+                            </gridCell>
+                            <gridCell row="qzH-7k-DxD" column="wri-ny-Ez8" id="ndE-4O-WRR">
+                                <button key="contentView" tag="3" translatesAutoresizingMaskIntoConstraints="NO" id="oWQ-Vp-99m">
+                                    <rect key="frame" x="-2" y="-2" width="192" height="18"/>
+                                    <buttonCell key="cell" type="check" title="Show AM/PM" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="wHM-Vz-n6I">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="checkBoxClicked:" target="MUN-z6-qDm" id="Em2-DF-Vt2"/>
+                                    </connections>
+                                </button>
+                            </gridCell>
+                        </gridCells>
+                    </gridView>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YMg-hJ-eoO">
+                        <rect key="frame" x="18" y="79" width="82" height="16"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Date options" usesSingleLineMode="YES" id="fRr-jF-hAT">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <button fixedFrame="YES" tag="5" translatesAutoresizingMaskIntoConstraints="NO" id="sw3-iQ-hki">
-                        <rect key="frame" x="139" y="34" width="220" height="30"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="Show the day of the week" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="SJf-Zh-g4M">
-                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DuK-RT-lm9">
+                        <rect key="frame" x="18" y="153" width="83" height="16"/>
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Time options" usesSingleLineMode="YES" id="V7g-VS-7tR">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <gridView xPlacement="fill" yPlacement="top" rowAlignment="none" columnSpacing="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="c2t-Rg-AoR">
+                        <rect key="frame" x="118" y="61" width="174" height="34"/>
+                        <rows>
+                            <gridRow id="OYE-yB-N1c"/>
+                            <gridRow id="ee6-yb-YTl"/>
+                        </rows>
+                        <columns>
+                            <gridColumn id="IGd-TX-agz"/>
+                        </columns>
+                        <gridCells>
+                            <gridCell row="OYE-yB-N1c" column="IGd-TX-agz" id="Kz8-LQ-b2y">
+                                <button key="contentView" tag="4" translatesAutoresizingMaskIntoConstraints="NO" id="qib-nV-OYJ">
+                                    <rect key="frame" x="-2" y="18" width="178" height="18"/>
+                                    <buttonCell key="cell" type="check" title="Show date" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="BDg-ZQ-zFx">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="checkBoxClicked:" target="MUN-z6-qDm" id="NrB-aN-wmX"/>
+                                    </connections>
+                                </button>
+                            </gridCell>
+                            <gridCell row="ee6-yb-YTl" column="IGd-TX-agz" id="jfn-Eo-PN1">
+                                <button key="contentView" tag="5" translatesAutoresizingMaskIntoConstraints="NO" id="sw3-iQ-hki">
+                                    <rect key="frame" x="-2" y="-2" width="178" height="18"/>
+                                    <buttonCell key="cell" type="check" title="Show the day of the week" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="SJf-Zh-g4M">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="checkBoxClicked:" target="MUN-z6-qDm" id="9o9-nG-vbd"/>
+                                    </connections>
+                                </button>
+                            </gridCell>
+                        </gridCells>
+                    </gridView>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Cn6-rn-bvP">
+                        <rect key="frame" x="112" y="13" width="179" height="32"/>
+                        <buttonCell key="cell" type="push" title="World Clock Settings..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="XSA-E0-qMf">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="checkBoxClicked:" target="MUN-z6-qDm" id="9o9-nG-vbd"/>
+                            <action selector="worldClockSettingsClicked:" target="MUN-z6-qDm" id="jth-nM-JVG"/>
                         </connections>
                     </button>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="DuK-RT-lm9" firstAttribute="leading" secondItem="z56-gW-g35" secondAttribute="leading" constant="20" id="3dM-EC-MPa"/>
+                    <constraint firstItem="lJa-gS-zG5" firstAttribute="top" secondItem="DuK-RT-lm9" secondAttribute="top" id="5eG-8D-QGP"/>
+                    <constraint firstItem="lJa-gS-zG5" firstAttribute="top" secondItem="z56-gW-g35" secondAttribute="top" constant="20" id="6Fy-wi-Ikp"/>
+                    <constraint firstItem="lJa-gS-zG5" firstAttribute="leading" secondItem="DuK-RT-lm9" secondAttribute="trailing" constant="20" id="70s-dC-6bc"/>
+                    <constraint firstItem="Cn6-rn-bvP" firstAttribute="top" secondItem="c2t-Rg-AoR" secondAttribute="bottom" constant="20" id="NH3-Uu-G0t"/>
+                    <constraint firstItem="c2t-Rg-AoR" firstAttribute="top" secondItem="lJa-gS-zG5" secondAttribute="bottom" constant="20" id="NQX-iU-ac2"/>
+                    <constraint firstItem="c2t-Rg-AoR" firstAttribute="top" secondItem="YMg-hJ-eoO" secondAttribute="top" id="OYY-Tb-A13"/>
+                    <constraint firstItem="Cn6-rn-bvP" firstAttribute="leading" secondItem="c2t-Rg-AoR" secondAttribute="leading" id="YdB-fW-AWq"/>
+                    <constraint firstItem="YMg-hJ-eoO" firstAttribute="leading" secondItem="z56-gW-g35" secondAttribute="leading" constant="20" id="lii-aw-rJp"/>
+                    <constraint firstItem="c2t-Rg-AoR" firstAttribute="leading" secondItem="YMg-hJ-eoO" secondAttribute="trailing" constant="20" id="uyQ-Kk-fQL"/>
+                </constraints>
             </view>
             <connections>
                 <outlet property="delegate" destination="MUN-z6-qDm" id="pyF-2S-Dp6"/>
             </connections>
-            <point key="canvasLocation" x="-150" y="467"/>
+            <point key="canvasLocation" x="390" y="-41"/>
+        </window>
+        <window title="World Clock Settings" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="aTW-Zn-PwZ">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
+            <windowCollectionBehavior key="collectionBehavior" fullScreenNone="YES"/>
+            <rect key="contentRect" x="283" y="305" width="480" height="270"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+            <view key="contentView" id="VWA-RV-aE3">
+                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="66E-hO-mIk">
+                        <rect key="frame" x="120" y="177" width="217" height="25"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="hGZ-wp-Wkc">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            <objectValues>
+                                <string>Item 1</string>
+                                <string>Item 2</string>
+                                <string>Item 3</string>
+                            </objectValues>
+                        </comboBoxCell>
+                    </comboBox>
+                </subviews>
+            </view>
+            <connections>
+                <outlet property="delegate" destination="5Ua-QC-dcF" id="CdM-Jv-FDu"/>
+            </connections>
+            <point key="canvasLocation" x="68" y="314"/>
         </window>
     </objects>
 </document>

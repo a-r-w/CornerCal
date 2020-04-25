@@ -100,6 +100,7 @@ class CalendarController: NSObject {
         }
         
         formatter.dateFormat = String(format: "%@%@", dateFormat, timeFormat)
+        initTiming()
     }
     
     func setWorldClockFormat() {
@@ -192,7 +193,6 @@ class CalendarController: NSObject {
             onCalendarUpdate()
             setDateFormat()
             setWorldClockFormat()
-            initTiming()
         }
     }
     

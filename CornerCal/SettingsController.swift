@@ -21,15 +21,14 @@ class SettingsController: NSObject, NSWindowDelegate {
     let defaults: UserDefaults!
     let keysToViewMap: [String]!
     let keys = SettingsKeys()
-    
+
     @IBOutlet weak var calendarController: CalendarController!
     
     @IBOutlet weak var worldClockSettingsWindow: NSWindow!
     
     override init() {
         defaults = UserDefaults.standard
-        defaults.synchronize()
-        
+
         keysToViewMap = [
             keys.SHOW_SECONDS_KEY,
             keys.USE_HOURS_24_KEY,
@@ -79,8 +78,7 @@ class SettingsController: NSObject, NSWindowDelegate {
             let key = keysToViewMap[sender.tag - 1]
             
             defaults.set(sender.state == .on, forKey: key)
-            defaults.synchronize()
-            
+
             updateAMPMEnabled()
             calendarController.setDateFormat()
         }

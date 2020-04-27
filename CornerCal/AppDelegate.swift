@@ -22,6 +22,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         trySetDefaultValueFor(key: keys.SHOW_DAY_OF_WEEK_KEY, value: true)
         trySetDefaultValueFor(key: keys.USE_HOURS_24_KEY, value: true)
         trySetDefaultValueFor(key: keys.SHOW_AM_PM_KEY, value: true)
+        trySetDefaultValueFor(key: keys.SHOW_WORLD_CLOCK_KEY, value: false)
     }
     
     func applicationDidFinishLaunching(_ notification: Notification) {

@@ -14,6 +14,7 @@ struct SettingsKeys {
     let SHOW_AM_PM_KEY = "AM_PM"
     let SHOW_DATE_KEY = "SHOW_DATE"
     let SHOW_DAY_OF_WEEK_KEY = "DAY_OF_WEEK"
+    let SHOW_WORLD_CLOCK_KEY = "WORLD_CLOCK"
 }
 
 class SettingsController: NSObject, NSWindowDelegate {
@@ -34,7 +35,8 @@ class SettingsController: NSObject, NSWindowDelegate {
             keys.USE_HOURS_24_KEY,
             keys.SHOW_AM_PM_KEY,
             keys.SHOW_DATE_KEY,
-            keys.SHOW_DAY_OF_WEEK_KEY
+            keys.SHOW_DAY_OF_WEEK_KEY,
+            keys.SHOW_WORLD_CLOCK_KEY
         ]
         
         super.init()
@@ -46,7 +48,8 @@ class SettingsController: NSObject, NSWindowDelegate {
             use24HoursBox,
             showAMPMBox,
             showDateBox,
-            showDayOfWeekBox
+            showDayOfWeekBox,
+            showWorldClock
         ]
         
         // read values of checkboxes from the settings, and apply!
@@ -55,10 +58,15 @@ class SettingsController: NSObject, NSWindowDelegate {
         }
         
         updateAMPMEnabled()
+        updateWorldClockSettingsEnabled()
     }
     
     func updateAMPMEnabled() {
         showAMPMBox.isEnabled = use24HoursBox.state == .off
+    }
+    
+    func updateWorldClockSettingsEnabled() {
+        worldClockSettings.isEnabled = showWorldClock.state == .on
     }
     
     @IBOutlet weak var showSecondsBox: NSButton!
@@ -71,6 +79,10 @@ class SettingsController: NSObject, NSWindowDelegate {
     
     @IBOutlet weak var showDayOfWeekBox: NSButton!
     
+    @IBOutlet weak var showWorldClock: NSButton!
+    
+    @IBOutlet weak var worldClockSettings: NSButton!
+    
     @IBAction func checkBoxClicked(_ sender: NSButton) {
         // we use tags defined for views to recognize the right checkbox
         // checkboxes use tags starting from 1
@@ -80,6 +92,7 @@ class SettingsController: NSObject, NSWindowDelegate {
             defaults.set(sender.state == .on, forKey: key)
 
             updateAMPMEnabled()
+            updateWorldClockSettingsEnabled()
             calendarController.setDateFormat()
         }
     }

@@ -27,13 +27,10 @@
                 <outlet property="showDateBox" destination="qib-nV-OYJ" id="mow-4N-fy8"/>
                 <outlet property="showDayOfWeekBox" destination="sw3-iQ-hki" id="VIU-SJ-3w9"/>
                 <outlet property="showSecondsBox" destination="DsG-Kg-fxR" id="a3Q-Z4-nsY"/>
+                <outlet property="showWorldClock" destination="Ybp-Du-qeu" id="kXP-6s-t8w"/>
                 <outlet property="use24HoursBox" destination="E8n-nc-rfB" id="O1q-22-QEZ"/>
+                <outlet property="worldClockSettings" destination="Cn6-rn-bvP" id="6vz-Bw-pPc"/>
                 <outlet property="worldClockSettingsWindow" destination="aTW-Zn-PwZ" id="PEz-lQ-36Z"/>
-            </connections>
-        </customObject>
-        <customObject id="5Ua-QC-dcF" customClass="WorldClockSettingsController" customModule="CornerCal" customModuleProvider="target">
-            <connections>
-                <outlet property="timezoneCombo" destination="66E-hO-mIk" id="N6U-Oh-pFk"/>
             </connections>
         </customObject>
         <customObject id="3bX-Tg-Ykk" customClass="MainMenuController" customModule="CornerCal" customModuleProvider="target">
@@ -174,16 +171,16 @@ IA
         <window title="Settings" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="2fn-5w-bKg">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowCollectionBehavior key="collectionBehavior" fullScreenNone="YES"/>
-            <rect key="contentRect" x="564" y="309" width="348" height="189"/>
+            <rect key="contentRect" x="564" y="309" width="348" height="224"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <value key="minSize" type="size" width="410" height="250"/>
             <value key="maxSize" type="size" width="410" height="250"/>
             <view key="contentView" id="z56-gW-g35">
-                <rect key="frame" x="0.0" y="0.0" width="348" height="189"/>
+                <rect key="frame" x="0.0" y="0.0" width="348" height="224"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <gridView xPlacement="fill" yPlacement="top" rowAlignment="none" columnSpacing="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="lJa-gS-zG5">
-                        <rect key="frame" x="119" y="115" width="188" height="54"/>
+                        <rect key="frame" x="120" y="150" width="188" height="54"/>
                         <rows>
                             <gridRow id="LVW-JE-7En"/>
                             <gridRow id="8S6-DY-hbK"/>
@@ -232,15 +229,23 @@ IA
                         </gridCells>
                     </gridView>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YMg-hJ-eoO">
-                        <rect key="frame" x="18" y="79" width="82" height="16"/>
+                        <rect key="frame" x="20" y="114" width="82" height="16"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Date options" usesSingleLineMode="YES" id="fRr-jF-hAT">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="x7P-4G-91j">
+                        <rect key="frame" x="24" y="60" width="78" height="16"/>
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="World Clock" usesSingleLineMode="YES" id="LUX-1x-bfM">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DuK-RT-lm9">
-                        <rect key="frame" x="18" y="153" width="83" height="16"/>
+                        <rect key="frame" x="19" y="188" width="83" height="16"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Time options" usesSingleLineMode="YES" id="V7g-VS-7tR">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -248,7 +253,7 @@ IA
                         </textFieldCell>
                     </textField>
                     <gridView xPlacement="fill" yPlacement="top" rowAlignment="none" columnSpacing="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="c2t-Rg-AoR">
-                        <rect key="frame" x="118" y="61" width="174" height="34"/>
+                        <rect key="frame" x="120" y="96" width="174" height="34"/>
                         <rows>
                             <gridRow id="OYE-yB-N1c"/>
                             <gridRow id="ee6-yb-YTl"/>
@@ -283,34 +288,62 @@ IA
                             </gridCell>
                         </gridCells>
                     </gridView>
-                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Cn6-rn-bvP">
-                        <rect key="frame" x="112" y="13" width="179" height="32"/>
-                        <buttonCell key="cell" type="push" title="World Clock Settings..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="XSA-E0-qMf">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="worldClockSettingsClicked:" target="MUN-z6-qDm" id="jth-nM-JVG"/>
-                        </connections>
-                    </button>
+                    <gridView xPlacement="leading" yPlacement="bottom" rowAlignment="none" translatesAutoresizingMaskIntoConstraints="NO" id="SuX-Wb-BYG">
+                        <rect key="frame" x="120" y="35" width="124" height="41"/>
+                        <rows>
+                            <gridRow id="ta5-fn-z25"/>
+                            <gridRow id="cf3-TU-mPh"/>
+                        </rows>
+                        <columns>
+                            <gridColumn id="psh-qw-ee5"/>
+                        </columns>
+                        <gridCells>
+                            <gridCell row="ta5-fn-z25" column="psh-qw-ee5" id="cL2-Pm-8ns">
+                                <button key="contentView" verticalHuggingPriority="750" tag="6" translatesAutoresizingMaskIntoConstraints="NO" id="Ybp-Du-qeu">
+                                    <rect key="frame" x="-2" y="25" width="128" height="18"/>
+                                    <buttonCell key="cell" type="check" title="Show world clock" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Pi7-Ih-FQs">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="checkBoxClicked:" target="MUN-z6-qDm" id="NAm-5b-dGT"/>
+                                    </connections>
+                                </button>
+                            </gridCell>
+                            <gridCell row="cf3-TU-mPh" column="psh-qw-ee5" id="RwN-OO-Bvw">
+                                <button key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Cn6-rn-bvP">
+                                    <rect key="frame" x="-6" y="-7" width="124" height="32"/>
+                                    <buttonCell key="cell" type="push" title="Choose Cities" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="XSA-E0-qMf">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="worldClockSettingsClicked:" target="MUN-z6-qDm" id="jth-nM-JVG"/>
+                                    </connections>
+                                </button>
+                            </gridCell>
+                        </gridCells>
+                    </gridView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="DuK-RT-lm9" firstAttribute="leading" secondItem="z56-gW-g35" secondAttribute="leading" constant="20" id="3dM-EC-MPa"/>
                     <constraint firstItem="lJa-gS-zG5" firstAttribute="top" secondItem="DuK-RT-lm9" secondAttribute="top" id="5eG-8D-QGP"/>
                     <constraint firstItem="lJa-gS-zG5" firstAttribute="top" secondItem="z56-gW-g35" secondAttribute="top" constant="20" id="6Fy-wi-Ikp"/>
                     <constraint firstItem="lJa-gS-zG5" firstAttribute="leading" secondItem="DuK-RT-lm9" secondAttribute="trailing" constant="20" id="70s-dC-6bc"/>
-                    <constraint firstItem="Cn6-rn-bvP" firstAttribute="top" secondItem="c2t-Rg-AoR" secondAttribute="bottom" constant="20" id="NH3-Uu-G0t"/>
+                    <constraint firstItem="SuX-Wb-BYG" firstAttribute="leading" secondItem="x7P-4G-91j" secondAttribute="trailing" constant="20" id="DMA-Fx-Wwo"/>
+                    <constraint firstItem="SuX-Wb-BYG" firstAttribute="top" secondItem="x7P-4G-91j" secondAttribute="top" id="FBf-f4-GnT"/>
+                    <constraint firstItem="SuX-Wb-BYG" firstAttribute="top" secondItem="c2t-Rg-AoR" secondAttribute="bottom" constant="20" id="G8M-NY-Nxm"/>
                     <constraint firstItem="c2t-Rg-AoR" firstAttribute="top" secondItem="lJa-gS-zG5" secondAttribute="bottom" constant="20" id="NQX-iU-ac2"/>
                     <constraint firstItem="c2t-Rg-AoR" firstAttribute="top" secondItem="YMg-hJ-eoO" secondAttribute="top" id="OYY-Tb-A13"/>
-                    <constraint firstItem="Cn6-rn-bvP" firstAttribute="leading" secondItem="c2t-Rg-AoR" secondAttribute="leading" id="YdB-fW-AWq"/>
-                    <constraint firstItem="YMg-hJ-eoO" firstAttribute="leading" secondItem="z56-gW-g35" secondAttribute="leading" constant="20" id="lii-aw-rJp"/>
+                    <constraint firstItem="c2t-Rg-AoR" firstAttribute="leading" secondItem="z56-gW-g35" secondAttribute="leading" constant="120" id="OgX-51-2tb"/>
+                    <constraint firstItem="SuX-Wb-BYG" firstAttribute="leading" secondItem="z56-gW-g35" secondAttribute="leading" constant="120" id="cRM-7v-OFS"/>
+                    <constraint firstItem="lJa-gS-zG5" firstAttribute="leading" secondItem="z56-gW-g35" secondAttribute="leading" constant="120" id="rrP-bw-LIn"/>
                     <constraint firstItem="c2t-Rg-AoR" firstAttribute="leading" secondItem="YMg-hJ-eoO" secondAttribute="trailing" constant="20" id="uyQ-Kk-fQL"/>
                 </constraints>
             </view>
             <connections>
                 <outlet property="delegate" destination="MUN-z6-qDm" id="pyF-2S-Dp6"/>
             </connections>
-            <point key="canvasLocation" x="390" y="-41"/>
+            <point key="canvasLocation" x="390" y="-24"/>
         </window>
         <window title="World Clock Settings" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="aTW-Zn-PwZ">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
@@ -321,26 +354,147 @@ IA
                 <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="66E-hO-mIk">
-                        <rect key="frame" x="120" y="177" width="217" height="25"/>
+                    <button verticalHuggingPriority="750" id="rEt-J3-GrC">
+                        <rect key="frame" x="20" y="19" width="20" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="hGZ-wp-Wkc">
+                        <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSAddTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="sY0-19-qfn">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                            <objectValues>
-                                <string>Item 1</string>
-                                <string>Item 2</string>
-                                <string>Item 3</string>
-                            </objectValues>
-                        </comboBoxCell>
-                    </comboBox>
+                        </buttonCell>
+                        <connections>
+                            <action selector="addCity:" target="mUM-M4-r3L" id="ryO-HE-hkE"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kLb-ih-DQP">
+                        <rect key="frame" x="47" y="21" width="20" height="20"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSRemoveTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="V7f-ca-WeM">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="removeCity:" target="mUM-M4-r3L" id="D6L-eh-lS3"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bAr-EF-nju">
+                        <rect key="frame" x="385" y="10" width="81" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0r2-Nd-AMa">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                    </button>
+                    <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="22" horizontalPageScroll="10" verticalLineScroll="22" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6hW-AI-qmB">
+                        <rect key="frame" x="20" y="47" width="440" height="203"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <clipView key="contentView" drawsBackground="NO" id="HIA-6T-lTN">
+                            <rect key="frame" x="1" y="0.0" width="438" height="202"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="20" rowSizeStyle="automatic" headerView="Vwl-W3-5Ft" viewBased="YES" id="RMR-Be-yUR">
+                                    <rect key="frame" x="0.0" y="0.0" width="438" height="177"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <size key="intercellSpacing" width="3" height="2"/>
+                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                    <tableColumns>
+                                        <tableColumn identifier="timezoneColumn" width="143" minWidth="10" maxWidth="3.4028234663852886e+38" id="sFx-Kf-sO9">
+                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Timezone">
+                                                <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </tableHeaderCell>
+                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="hRM-hB-6cp">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                            <prototypeCellViews>
+                                                <tableCellView identifier="timezoneCell" id="z9z-jB-qfS" customClass="TimezoneCellView" customModule="CornerCal" customModuleProvider="target">
+                                                    <rect key="frame" x="1" y="1" width="143" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <subviews>
+                                                        <popUpButton id="sDd-w9-irq">
+                                                            <rect key="frame" x="1" y="-2" width="143" height="26"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                            <popUpButtonCell key="cell" type="bevel" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" imageScaling="proportionallyDown" inset="2" id="kHu-yd-TzW">
+                                                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                                <font key="font" metaFont="system"/>
+                                                                <menu key="menu" id="Mug-eB-Fb2"/>
+                                                            </popUpButtonCell>
+                                                        </popUpButton>
+                                                    </subviews>
+                                                    <connections>
+                                                        <outlet property="timezonePopup" destination="sDd-w9-irq" id="k9P-3E-awH"/>
+                                                    </connections>
+                                                </tableCellView>
+                                            </prototypeCellViews>
+                                        </tableColumn>
+                                        <tableColumn identifier="descriptionColumn" width="289" minWidth="40" maxWidth="1000" id="nHK-29-zGj">
+                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Description">
+                                                <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                            </tableHeaderCell>
+                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" identifier="descriptionCell" title="Text Cell" id="LNI-7X-W36">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                            <prototypeCellViews>
+                                                <tableCellView identifier="descriptionCell" id="BJO-8P-eKM">
+                                                    <rect key="frame" x="147" y="1" width="289" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <subviews>
+                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QGZ-d4-ca8">
+                                                            <rect key="frame" x="0.0" y="3" width="289" height="17"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="eY7-Pw-bQv">
+                                                                <font key="font" metaFont="system"/>
+                                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                            </textFieldCell>
+                                                        </textField>
+                                                    </subviews>
+                                                    <connections>
+                                                        <outlet property="textField" destination="QGZ-d4-ca8" id="VNT-P2-aYA"/>
+                                                    </connections>
+                                                </tableCellView>
+                                            </prototypeCellViews>
+                                        </tableColumn>
+                                    </tableColumns>
+                                </tableView>
+                            </subviews>
+                            <nil key="backgroundColor"/>
+                        </clipView>
+                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="kzx-ml-65a">
+                            <rect key="frame" x="1" y="186" width="438" height="16"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                        <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="Ln4-CE-fCR">
+                            <rect key="frame" x="224" y="17" width="15" height="102"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                        <tableHeaderView key="headerView" id="Vwl-W3-5Ft">
+                            <rect key="frame" x="0.0" y="0.0" width="438" height="25"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </tableHeaderView>
+                    </scrollView>
                 </subviews>
             </view>
-            <connections>
-                <outlet property="delegate" destination="5Ua-QC-dcF" id="CdM-Jv-FDu"/>
-            </connections>
-            <point key="canvasLocation" x="68" y="314"/>
+            <point key="canvasLocation" x="162" y="487"/>
         </window>
+        <viewController id="mUM-M4-r3L" customClass="WorldClockSettingsController" customModule="CornerCal" customModuleProvider="target">
+            <connections>
+                <outlet property="addButton" destination="rEt-J3-GrC" id="xFS-J8-S4O"/>
+                <outlet property="removeButton" destination="kLb-ih-DQP" id="Vju-iH-R9X"/>
+                <outlet property="table" destination="RMR-Be-yUR" id="a98-fb-xiY"/>
+                <outlet property="view" destination="VWA-RV-aE3" id="raQ-Yc-NF1"/>
+            </connections>
+        </viewController>
     </objects>
+    <resources>
+        <image name="NSAddTemplate" width="11" height="11"/>
+        <image name="NSRemoveTemplate" width="11" height="11"/>
+    </resources>
 </document>

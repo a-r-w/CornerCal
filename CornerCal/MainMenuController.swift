@@ -130,10 +130,14 @@ class MainMenuController: NSObject, NSCollectionViewDataSource {
     }
 
     func initMenu() {
-        statusClock = NSMenuItem(title: "London: 12pm", action: nil, keyEquivalent: "")
+        statusClock = NSMenuItem(title: "London: 12pm", action: #selector(worldClockItem), keyEquivalent: "")
+        statusClock!.target = self
         statusMenu.insertItem(statusClock!, at: 1)
         statusMenu.insertItem(NSMenuItem.separator(), at: 1)
 
     }
     
+    @objc func worldClockItem (send: AnyObject?) {
+        NSLog("%d", statusClock!.isEnabled)
+    }
 }
